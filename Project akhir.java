@@ -1,4 +1,30 @@
-import java.util.Scanner;
+public class SelectionSortInt {
+
+    public static void main(String[] args) {
+
+        int[] arr = {99, 98, 3, 2, 5, 4, 70, 50};
+
+        int jumlahPerbandingan = 0;
+        int jumlahPertukaran = 0;
+
+        long startTime = System.nanoTime();
+
+        for (int i = 0; i < arr.length - 1; i++) {
+
+            int maxIndex = i; // anggap index sekarang adalah yang terbesar
+
+            for (int j = i + 1; j < arr.length; j++) {
+
+                jumlahPerbandingan++;
+
+                // cari yang lebih besar (descending)
+                if (arr[j] > arr[maxIndex]) {
+                    maxIndex = j; // simpan index terbesar
+                }
+            }
+
+            // tukar hanya sekali setelah ketemu yang terbesar
+            if (maxIndex != i) {import java.util.Scanner;
 
 // Struktur Record untuk Film
 class Film {
@@ -253,5 +279,36 @@ public class PemesananTiketBioskop {
         for (int i = 0; i < 30; i++) {
             daftarFilm[jumlahData++] = new Film(i + 1, nama[i], kat[i], stat[i], terjual[i], sedia[i]);
         }
+    }
+}
+                int temp = arr[i];
+                arr[i] = arr[maxIndex];
+                arr[maxIndex] = temp;
+
+                jumlahPertukaran++;
+            }
+
+            // tampilkan iterasi
+            System.out.print("Iterasi ke-" + (i + 1) + ": ");
+            for (int k = 0; k < arr.length; k++) {
+                System.out.print(arr[k] + " ");
+            }
+            System.out.println();
+        }
+
+        long endTime = System.nanoTime();
+
+        // hasil akhir
+        System.out.print("Hasil akhir: ");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+
+        System.out.println("Jumlah perbandingan: " + jumlahPerbandingan);
+        System.out.println("Jumlah pertukaran: " + jumlahPertukaran);
+
+        double waktuMs = (endTime - startTime) / 1_000_000.0;
+        System.out.println("Waktu eksekusi: " + waktuMs + " ms");
     }
 }
