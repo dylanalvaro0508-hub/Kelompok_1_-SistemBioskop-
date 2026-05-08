@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class Mahasiswa
+{
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        int jumlah;
+        double total = 0;
+        int lulus = 0;
+
+        System.out.print("Masukkan jumlah mahasiswa: ");
+        jumlah = input.nextInt();
+
+        double[] nilai = new double[jumlah];
+
+        System.out.println("\n--- Input Nilai Mahasiswa ---");
+        for (int i = 0; i < jumlah; i++) {
+            System.out.print("Masukkan nilai mahasiswa ke-" + (i+1) + ": ");
+            nilai[i] = input.nextDouble();
+            total += nilai[i];
+
+            if (nilai[i] > 60) {
+                lulus++;
+            }
+        }
+
+        double rata = total / jumlah;
+
+        double terendah = nilai[0];
+        for (int i = 1; i < jumlah; i++) {
+            if (nilai[i] < terendah) {
+                terendah = nilai[i];
+            }
+        }
+
+        double persentase = ((double) lulus / jumlah) * 100;
+
+        System.out.println("\n--- Laporan Statistik Nilai ---");
+
+        System.out.print("Daftar Nilai: ");
+        for (int i = 0; i < jumlah; i++) {
+            System.out.print(nilai[i] + " ");
+        }
+
+        System.out.println("\nRata-rata nilai kelas: " + rata);
+        System.out.println("Nilai terendah: " + terendah);
+        System.out.println("Jumlah mahasiswa lulus : " + lulus);
+        System.out.println("Persentase kelulusan: " + persentase + "%");
+
+        System.out.print("Nilai di atas rata-rata: ");
+        for (int i = 0; i < jumlah; i++) {
+            if (nilai[i] > rata) {
+                System.out.print(nilai[i] + " ");
+            }
+        }
+    }
+}
